@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+  <title id="title">二分类 softmax 二维函数图</title>
+  <desc id="desc">横轴是两个类别的分数差，纵轴是 softmax 输出概率。蓝色曲线表示类别 A 的概率，橙色曲线表示类别 B 的概率。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#233246" />
+    </marker>
+    <style>
+      .bg { fill: #ffffff; }
+      .grid { stroke: #e4ebf2; stroke-width: 1; }
+      .mid { stroke: #9fb0c0; stroke-width: 1.6; stroke-dasharray: 6 7; }
+      .axis { stroke: #233246; stroke-width: 2.5; marker-end: url(#arrow); }
+      .tick { stroke: #233246; stroke-width: 1.5; }
+      .tick-label { font: 500 14px "Consolas", "Menlo", monospace; fill: #526274; }
+      .axis-label { font: 700 18px "Microsoft YaHei", "PingFang SC", Arial, sans-serif; fill: #233246; }
+      .title { font: 700 26px "Microsoft YaHei", "PingFang SC", Arial, sans-serif; fill: #18283a; }
+      .curve-a { fill: none; stroke: #2563eb; stroke-width: 5; stroke-linecap: round; }
+      .curve-b { fill: none; stroke: #f59e0b; stroke-width: 5; stroke-linecap: round; }
+      .legend-text { font: 700 17px "Consolas", "Menlo", monospace; fill: #233246; }
+      .point { stroke: #ffffff; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1000" height="620" />
+  <text class="title" x="500" y="48" text-anchor="middle">二分类 softmax</text>
+
+  <!-- Plot area: x = -6..6 maps to 120..890; y = 0..1 maps to 525..95 -->
+  <g>
+    <!-- grid -->
+    <line class="grid" x1="120" y1="95" x2="120" y2="525" />
+    <line class="grid" x1="248.33" y1="95" x2="248.33" y2="525" />
+    <line class="grid" x1="376.67" y1="95" x2="376.67" y2="525" />
+    <line class="mid" x1="505" y1="95" x2="505" y2="525" />
+    <line class="grid" x1="633.33" y1="95" x2="633.33" y2="525" />
+    <line class="grid" x1="761.67" y1="95" x2="761.67" y2="525" />
+    <line class="grid" x1="890" y1="95" x2="890" y2="525" />
+
+    <line class="grid" x1="120" y1="525" x2="890" y2="525" />
+    <line class="grid" x1="120" y1="439" x2="890" y2="439" />
+    <line class="grid" x1="120" y1="353" x2="890" y2="353" />
+    <line class="mid" x1="120" y1="310" x2="890" y2="310" />
+    <line class="grid" x1="120" y1="267" x2="890" y2="267" />
+    <line class="grid" x1="120" y1="181" x2="890" y2="181" />
+    <line class="grid" x1="120" y1="95" x2="890" y2="95" />
+
+    <!-- axes -->
+    <line class="axis" x1="120" y1="525" x2="910" y2="525" />
+    <line class="axis" x1="120" y1="525" x2="120" y2="78" />
+
+    <!-- ticks -->
+    <line class="tick" x1="120" y1="525" x2="120" y2="533" />
+    <text class="tick-label" x="120" y="558" text-anchor="middle">-6</text>
+    <line class="tick" x1="248.33" y1="525" x2="248.33" y2="533" />
+    <text class="tick-label" x="248.33" y="558" text-anchor="middle">-4</text>
+    <line class="tick" x1="376.67" y1="525" x2="376.67" y2="533" />
+    <text class="tick-label" x="376.67" y="558" text-anchor="middle">-2</text>
+    <line class="tick" x1="505" y1="525" x2="505" y2="533" />
+    <text class="tick-label" x="505" y="558" text-anchor="middle">0</text>
+    <line class="tick" x1="633.33" y1="525" x2="633.33" y2="533" />
+    <text class="tick-label" x="633.33" y="558" text-anchor="middle">2</text>
+    <line class="tick" x1="761.67" y1="525" x2="761.67" y2="533" />
+    <text class="tick-label" x="761.67" y="558" text-anchor="middle">4</text>
+    <line class="tick" x1="890" y1="525" x2="890" y2="533" />
+    <text class="tick-label" x="890" y="558" text-anchor="middle">6</text>
+
+    <line class="tick" x1="112" y1="525" x2="120" y2="525" />
+    <text class="tick-label" x="102" y="530" text-anchor="end">0</text>
+    <line class="tick" x1="112" y1="310" x2="120" y2="310" />
+    <text class="tick-label" x="102" y="315" text-anchor="end">0.5</text>
+    <line class="tick" x1="112" y1="95" x2="120" y2="95" />
+    <text class="tick-label" x="102" y="100" text-anchor="end">1</text>
+
+    <!-- curves -->
+    <path class="curve-a" d="M 120 523.9
+      C 172 523.0, 225 520.6, 280 515.0
+      C 338 507.9, 393 477.3, 439 410.0
+      C 462 374.5, 485 339.4, 505 310.0
+      C 525 280.6, 548 245.5, 571 210.0
+      C 617 142.7, 672 112.1, 730 105.0
+      C 785 99.4, 838 97.0, 890 96.1" />
+
+    <path class="curve-b" d="M 120 96.1
+      C 172 97.0, 225 99.4, 280 105.0
+      C 338 112.1, 393 142.7, 439 210.0
+      C 462 245.5, 485 280.6, 505 310.0
+      C 525 339.4, 548 374.5, 571 410.0
+      C 617 477.3, 672 507.9, 730 515.0
+      C 785 520.6, 838 523.0, 890 523.9" />
+
+    <circle class="point" cx="505" cy="310" r="7" fill="#2563eb" />
+    <circle class="point" cx="505" cy="310" r="4" fill="#f59e0b" />
+
+    <!-- labels -->
+    <text class="axis-label" x="505" y="595" text-anchor="middle">x = s_A - s_B</text>
+    <text class="axis-label" x="48" y="310" text-anchor="middle" transform="rotate(-90 48 310)">probability</text>
+
+    <line x1="720" y1="142" x2="772" y2="142" class="curve-a" />
+    <text class="legend-text" x="786" y="148">P(A)</text>
+    <line x1="720" y1="182" x2="772" y2="182" class="curve-b" />
+    <text class="legend-text" x="786" y="188">P(B)</text>
+  </g>
+</svg>
