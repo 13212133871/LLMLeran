@@ -1,6 +1,6 @@
 # The Annotated Transformer 中文源码精读：从图解论文到可运行代码
 
-这份笔记重写自 Harvard NLP 的 [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)，并使用官方 GitHub 中的 `the_annotated_transformer.py` 源码作为讲解对象。图片已保存到 `images2/`，源码块按原文代码顺序保留，讲解部分用中文重新组织，不做英文逐字翻译。
+这份笔记重写自 Harvard NLP 的 [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)，并使用官方 GitHub 中的 `the_annotated_transformer.py` 源码作为讲解对象。图片已保存到 `images/annotated-transformer/`，源码块按原文代码顺序保留，讲解部分用中文重新组织，不做英文逐字翻译。
 
 读这篇时建议同时打开 [`illustrated-transformer-cn.md`](illustrated-transformer-cn.md)。前一篇偏“看图理解 Transformer 是什么”，这一篇偏“看代码理解 Transformer 怎么跑起来”。最重要的学习路线是：
 
@@ -9,7 +9,7 @@
 3. 再看 decoder 如何用 mask 和 source attention 生成目标句子。
 4. 最后看 loss、梯度下降、学习率、数据加载和可视化如何把论文模型训练成可用系统。
 
-![Attention is All You Need](images2/01-attention-is-all-you-need.png)
+![Attention is All You Need](images/annotated-transformer/01-attention-is-all-you-need.png)
 
 ## 0. 先把两篇文章对齐
 
@@ -31,7 +31,7 @@
 
 下面这张结构图是原文核心。先不要急着记每个箭头，只要抓住：左边 encoder 读输入，右边 decoder 写输出，中间注意力负责信息流动。
 
-![Transformer 架构](images2/02-transformer-architecture.png)
+![Transformer 架构](images/annotated-transformer/02-transformer-architecture.png)
 
 
 ## 一、准备运行环境：先把工具箱摆好
@@ -1473,9 +1473,9 @@ show_example(example_mask)
 
 这一部分对应 Illustrated Transformer 中 Q/K/V、缩放点积注意力、多头注意力、拼接和输出矩阵。前面那篇文章讲“为什么词要互相看”，这里直接给出“词到底怎么算出自己该看谁”。
 
-![缩放点积注意力](images2/03-scaled-dot-product-attention.png)
+![缩放点积注意力](images/annotated-transformer/03-scaled-dot-product-attention.png)
 
-![多头注意力](images2/04-multi-head-attention.png)
+![多头注意力](images/annotated-transformer/04-multi-head-attention.png)
 
 ### 16. attention：缩放点积注意力公式落地
 
@@ -4338,7 +4338,7 @@ def example_simple_model():
 
 前面的复制任务只是小实验：输入什么就输出什么，主要验证模型结构没接错。真实翻译要面对德语、英语、词表、padding、GPU、多进程训练、模型平均和注意力可视化。这一部分把论文模型放回真实任务里。
 
-![原文结果表](images2/05-results-table.png)
+![原文结果表](images/annotated-transformer/05-results-table.png)
 
 ### 36. load_tokenizers：加载德英分词器
 
